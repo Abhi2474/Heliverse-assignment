@@ -46,6 +46,10 @@ const Home = () => {
   };
 
   useEffect(() => {
+    document.title = "Home";
+  }, []);
+
+  useEffect(() => {
     let filteredData = mock_data;
 
     if (selectedDomain) {
@@ -77,7 +81,6 @@ const Home = () => {
 
   return (
     <div className="container mx-auto">
-
       <div className="text-xl my-5 flex justify-between px-20">
         <div className="flex items-center">
           <select
@@ -105,7 +108,11 @@ const Home = () => {
           </select>
           <label className="flex items-center w-fit cursor-pointer border-r border-r-black pr-3">
             <b className="mr-2">Available </b>
-            {isChecked ? <FaCheckSquare  className="text-2xl"/> : <FaRegSquare className="text-2xl" />}
+            {isChecked ? (
+              <FaCheckSquare className="text-2xl" />
+            ) : (
+              <FaRegSquare className="text-2xl" />
+            )}
             <input
               type="checkbox"
               checked={isChecked}
@@ -115,10 +122,10 @@ const Home = () => {
           </label>
 
           <GrPowerReset
-          title="Reset all filter"
-          onClick={handleClearFilters}
-          className=" cursor-pointer opacity-50 hover:opacity-100 text-3xl ml-2"
-        />
+            title="Reset all filter"
+            onClick={handleClearFilters}
+            className=" cursor-pointer opacity-50 hover:opacity-100 text-3xl ml-2"
+          />
         </div>
 
         <button
