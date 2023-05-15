@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import mock_data from "../assets/mock_data.json";
 import DataTemplete from "../components/DataTemplete";
 import { GrPowerReset } from "react-icons/gr";
@@ -6,8 +6,12 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
 import { FaCheckSquare, FaRegSquare } from "react-icons/fa";
 import _ from "lodash";
+import TeamContext from "../context/TeamContext";
 
 const Home = () => {
+
+  const { newUser, setNewUser } = useContext(TeamContext)
+
   const usersPerPage = 50;
   //   const totalPages = Math.ceil(mock_data.length / usersPerPage);
   const [currentPage, setCurrentPage] = useState(1);
@@ -77,6 +81,7 @@ const Home = () => {
 
   const handleTeam = () => {
     setCreateTeam(!createTeam);
+    setIsChecked(!isChecked);
   };
 
   return (
@@ -135,7 +140,13 @@ const Home = () => {
           {!createTeam ? (
             <AiOutlinePlus className="mr-2" />
           ) : (
-            <RxCross2 className="mr-2" />
+            <>
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-500 text-white mr-2">
+                {newUser.length} Member
+              </span>
+
+              <RxCross2 className="mr-2" />
+            </>
           )}
           Create Team
         </button>
@@ -154,7 +165,11 @@ const Home = () => {
       <div className="sm:grid sm:grid-cols-3 flex flex-wrap mx-10">
         {data.map((user) => {
           return (
-            <DataTemplete key={user.id} user={user} createTeam={createTeam} />
+            <DataTemplete
+              key={user.id}
+              user={user}
+              createTeam={createTeam}
+            />
           );
         })}
       </div>

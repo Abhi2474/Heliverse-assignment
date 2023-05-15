@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import TeamContext from "../context/TeamContext";
-import _ from "lodash";
+import _, { set } from "lodash";
 import { AiOutlinePlus } from "react-icons/ai";
 
 const DataTemplete = ({ user, createTeam }) => {
@@ -8,9 +8,8 @@ const DataTemplete = ({ user, createTeam }) => {
 	const { newUser, setNewUser } = useContext(TeamContext)
 
   const handleAdd = (user) => {
-    setNewUser((prevUser) =>  _.uniqBy([...prevUser, user], "id"));
+    setNewUser((prevUser) =>  _.intersection(_.uniqBy([...prevUser, user], "domain",), _.filter([...prevUser, user], {available: true})));
   };
-
 
   return (
     <>
