@@ -1,6 +1,6 @@
-# Heliverse-assignment 
+# Filter-user-project
 
-I completed my assignment with the required functionalities.
+In this project filter features impleted by using the ReactJs.
 
 ### Functionalities
 Search by Name
@@ -15,7 +15,7 @@ Make it responsive
 Install the dependencies with npm
 
 ```bash
-  git clone https://github.com/Abhi2474/Heliverse-assignment.git
+  git clone https://github.com/Abhi2474/filter-user-project.git
 ```
 
 ## Installation
@@ -23,7 +23,7 @@ Install the dependencies with npm
 Install the dependencies with npm
 
 ```bash
-cd Heliverse-assignment
+cd filter-user-project
 npm install
 ``` 
 ## Start the Server
